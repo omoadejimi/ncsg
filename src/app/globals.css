@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Base layer
+  ----------
+  Accessibility notes:
+  - :focus-visible gives every interactive element a 2px green ring with
+    offset, exceeding the WCAG 2.2 "Focus Appearance" minimum.
+  - prefers-reduced-motion disables all transitions/animations globally.
+  - Body text is 16px+ with generous line-height for lower-literacy and
+    low-vision readers; the measure is capped at ~75ch in components.
+*/
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored headings visible below the sticky header */
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased dark:bg-paper-dark dark:text-[#E7ECE8];
+    text-rendering: optimizeLegibility;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-green-600 ring-offset-2 ring-offset-paper dark:ring-green-500 dark:ring-offset-paper-dark;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    @apply bg-green-100 text-green-950 dark:bg-green-800 dark:text-white;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Visible only when focused — the skip link for keyboard users */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-sm focus:bg-green-900 focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white;
+  }
+
+  /* The tri-band mark: green | white | green, echoing the flag.
+     Used in the logo and as the signature divider on the homepage. */
+  .triband {
+    background: linear-gradient(
+      to right,
+      theme("colors.green.900") 0 33.3%,
+      transparent 33.3% 66.6%,
+      theme("colors.green.900") 66.6% 100%
+    );
+  }
+  .dark .triband {
+    background: linear-gradient(
+      to right,
+      theme("colors.green.500") 0 33.3%,
+      transparent 33.3% 66.6%,
+      theme("colors.green.500") 66.6% 100%
+    );
+  }
+}
+
+/* Search-match highlighting */
+mark {
+  @apply rounded-[2px] bg-green-100 px-0.5 text-green-950 dark:bg-green-700 dark:text-white;
+}

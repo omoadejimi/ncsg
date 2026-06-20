@@ -1,0 +1,148 @@
+---
+title: Error messages
+description: An error message should tell people what happened, reassure them about their money and data, and show them the way forward.
+keywords: [errors, failed transaction, validation, BVN, transfer failed, reversal, fintech]
+---
+
+## Overview
+
+An error message is the product speaking at the exact moment trust is most fragile. In Nigerian fintech, that moment usually involves money: a transfer that hangs, a debit that may or may not have happened, a BVN that won't verify.
+
+Good error messages do three jobs, in this order:
+
+1. **Say what happened**, in plain language.
+2. **Say what it means** for the person's money, data or progress.
+3. **Say what to do next** — or that nothing is needed.
+
+If a message cannot do all three, it is not finished.
+
+## Principles
+
+### Lead with the situation, not the system
+
+Describe the problem from the user's side of the screen. "Error 51" describes the system. "You don't have enough money in this account" describes the situation.
+
+### Reassure about money first
+
+In any payment flow, the user's first fear is a double debit. If money has not moved, say so immediately. If it has, say exactly where it is and when it returns.
+
+### Never blame the user
+
+Write "Check the account number" rather than "You entered an invalid account number". The fix matters; fault does not.
+
+### Be honest about uncertainty
+
+If the system genuinely doesn't know whether a transaction completed, say that — and say what happens in each case. False confidence is worse than honest uncertainty.
+
+### Drop the theatre
+
+No "Oops!", no sad-face emoji, no exclamation marks. A failed transfer is not a whimsical moment. Calm, plain sentences read as competence.
+
+## Do and Don't
+
+<DoDont>
+<Do>
+We couldn't complete your transfer.
+
+Your money has not left your account. Check your network connection and try again.
+</Do>
+<Dont>
+Oops! Something went wrong 😢
+
+Please try again later.
+</Dont>
+</DoDont>
+
+<DoDont>
+<Do>
+Check the BVN and try again.
+
+A BVN is 11 digits. Dial *565*0# on the phone number linked to your bank account to see yours.
+</Do>
+<Dont>
+Invalid BVN.
+</Dont>
+</DoDont>
+
+<DoDont>
+<Do>
+You don't have enough money in this account.
+
+This transfer needs ₦12,500 including the ₦25 fee. You can change the amount or add money to your account.
+</Do>
+<Dont>
+Transaction declined: insufficient funds (error code 51).
+</Dont>
+</DoDont>
+
+<DoDont>
+<Do>
+This transfer is taking longer than usual.
+
+We're still trying. If it doesn't complete in 5 minutes, any money taken will be returned to your account automatically.
+</Do>
+<Dont>
+Request timeout. Please contact support.
+</Dont>
+</DoDont>
+
+## Nigerian-specific considerations
+
+### Address the double-debit fear directly
+
+Years of "debited but not credited" experiences mean Nigerian users assume the worst when a payment fails. State the position of their money explicitly — *your money has not left your account* — even when it feels obvious to the team.
+
+### Give reversal timelines people can hold you to
+
+"Your money will be reversed" is folklore; "within 24 hours" is a commitment. Use a concrete window your operations team actually meets, and prefer "returned to your account" over the jargon "reversed" where space allows.
+
+### Plan for unreliable networks as the normal case
+
+Network failure is not an edge case in Nigeria; it is Tuesday. Write distinct messages for *no connection*, *slow connection* and *bank's service is down* — they call for different actions. Where a USSD fallback exists, offer it: "No data? Dial *737# to try this transfer instead."
+
+### Respect metered data and battery
+
+Avoid auto-retry loops that silently burn data. If the app will retry, say so once; if the user should retry, make it one clear button.
+
+### Avoid carrier-grade jargon
+
+"Beneficiary", "narration", "switch failure" and "kindly revert" belong in back-office systems. People send money *to someone*, with *a description*, and things *fail*.
+
+## Accessibility considerations
+
+- Announce errors to screen readers with a polite live region (`role="alert"` or `aria-live="assertive"` for blocking errors).
+- Place inline form errors **above or beside the field**, programmatically associated with `aria-describedby` — never colour alone.
+- Keep contrast of error text at 4.5:1 or better; on this site, errors use clay `#9A3A18` on white.
+- Move focus to the error summary on submit failure, the pattern proven by GOV.UK forms research.
+- Never use ALL CAPS for emphasis — screen readers may spell it out letter by letter, and it reads as shouting.
+
+## Examples from fintech experience
+
+<Example title="Failed interbank transfer — full screen state">
+**Heading:** We couldn't send ₦25,000 to Chinedu Okafor
+
+**Body:** The receiving bank didn't respond. Your money has not left your account.
+
+**Primary action:** Try again
+
+**Secondary action:** Save and try later
+</Example>
+
+<Example title="Pending transaction — honest uncertainty">
+**Heading:** We're confirming this transfer
+
+**Body:** Your bank has received the request but hasn't confirmed it yet. If it fails, your ₦8,000 will be returned to your account within 24 hours. You don't need to do anything.
+
+**Action:** Check status
+</Example>
+
+<CopyExample label="Inline validation — phone number field">
+Enter the 11-digit phone number, starting with 0. For example, 0803 123 4567.
+</CopyExample>
+
+## Related guidance
+
+- [Plain language](/docs/foundations/plain-language)
+- [Financial terminology](/docs/nigeria/financial-terminology)
+- [Forms](/docs/patterns/forms)
+- [Notifications](/docs/patterns/notifications)

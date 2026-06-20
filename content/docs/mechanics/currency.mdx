@@ -1,0 +1,43 @@
+---
+title: Currency
+description: Write naira amounts consistently, place the symbol correctly, and handle kobo with intention.
+keywords: [naira, NGN, kobo, ₦, money formatting, fees]
+---
+
+## The naira symbol
+
+Use **₦** directly before the amount with no space: **₦5,000**. 
+
+If a system genuinely cannot render ₦ (some SMS gateways and older devices), fall back to **NGN 5,000** — never a bare "N", which is ambiguous in running text.
+
+## Formatting amounts
+
+- Thousands separators always: **₦1,500,000**, never ₦1500000.
+- Whole-naira amounts drop the kobo: **₦5,000**, not ₦5,000.00 — unless the context is a ledger or statement where columns must align.
+- When kobo matters (interest, exchange rates, unit pricing), show two decimal places consistently: **₦20.50**.
+
+<DoDont>
+<Do>
+Transfer fee: ₦26.88
+</Do>
+<Dont>
+Transfer fee: N26.875
+</Dont>
+</DoDont>
+
+## Words or symbols
+
+In interface copy, prefer the symbol. In long-form content where an amount is spoken about rather than displayed, "naira" in lowercase is fine: "a few thousand naira".
+
+## Foreign currency
+
+When showing foreign amounts, give the naira context Nigerians will reason in: **$10 (about ₦15,400)**. Mark converted amounts as approximate and date the rate if it can go stale.
+
+## Fees and totals
+
+Always show the fee and the total before the user confirms. "₦12,500 + ₦25 fee = ₦12,525 total" prevents the single most common payment support ticket.
+
+## Related guidance
+
+- [Numbers](/docs/mechanics/numbers)
+- [Financial terminology](/docs/nigeria/financial-terminology)

@@ -1,0 +1,41 @@
+---
+title: Address formats
+description: Nigerian addresses are descriptive, postcodes are rarely known, and landmark fields are not optional decoration.
+keywords: [address, postcode, LGA, state, landmark, delivery]
+---
+
+## The shape of a Nigerian address
+
+A usable Nigerian address form collects:
+
+1. **Street address** — house number and street, free text, generous length
+2. **Nearest landmark** — optional but prominent; this is how deliveries actually succeed
+3. **City / town**
+4. **Local Government Area (LGA)** — dropdown, filtered by state
+5. **State** — dropdown of the 36 states + FCT
+
+## Postcodes
+
+Nigeria has postcodes; almost nobody knows theirs. **Never make postcode a required field.** If a partner system demands one, derive it from the LGA behind the scenes.
+
+<DoDont>
+<Do>
+Nearest landmark (optional) — e.g. "opposite Mobil filling station"
+</Do>
+<Dont>
+Postcode (required)
+</Dont>
+</DoDont>
+
+## Writing addresses back
+
+Display addresses in the order users say them: street, landmark, city, LGA, state. Don't reformat into a foreign envelope layout.
+
+## Abbreviations
+
+Spell out "Street", "Road", "Close" and "Crescent" in stored data; accept any abbreviation in input. "FCT" and "Abuja" should both resolve to the Federal Capital Territory.
+
+## Related guidance
+
+- [Forms](/docs/patterns/forms)
+- [Inclusive writing](/docs/foundations/inclusive-writing)

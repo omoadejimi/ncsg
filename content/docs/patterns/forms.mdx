@@ -1,0 +1,40 @@
+---
+title: Forms
+description: Ask only for what you need, explain why you need it, and help people get it right the first time.
+keywords: [forms, labels, hint text, validation, KYC, onboarding]
+---
+
+## Ask less
+
+Every field costs completion. Before adding one, name the decision it powers. KYC requirements are real, but "we've always asked" is not a regulation.
+
+## Labels and hints
+
+- Labels above fields, always visible — **never placeholder-only labels**, which vanish on focus and fail screen readers.
+- Use hint text for format examples: "For example, 0803 123 4567".
+- Explain sensitive requests inline: "We need your BVN to verify your identity, as required by the CBN. We can't see your bank balance."
+
+<CopyExample label="BVN field">
+**Label:** Bank Verification Number (BVN)
+
+**Hint:** 11 digits. Dial *565*0# to check yours.
+
+**Reassurance:** Your BVN doesn't give us access to your bank accounts.
+</CopyExample>
+
+## Validation
+
+- Validate on submit or on leaving the field — not on every keystroke.
+- Error text says how to fix, not just what's wrong. See [Error messages](/docs/patterns/error-messages).
+- On submit failure, show an error summary at the top, move focus to it, and link each item to its field.
+
+## Nigerian-specific notes
+
+- Phone numbers: accept 0803…, +234 803… and 234803… and normalise silently. Don't make users learn your format.
+- Names: see [Inclusive writing](/docs/foundations/inclusive-writing) — no "letters only" validation.
+- Addresses: see [Address formats](/docs/nigeria/address-formats) — don't require postcodes.
+
+## Related guidance
+
+- [Error messages](/docs/patterns/error-messages)
+- [Government IDs](/docs/nigeria/government-ids)

@@ -1,0 +1,49 @@
+---
+title: Financial terminology
+description: Consistent, user-tested language for money movements, accounts, charges and identity checks across Nigerian financial products.
+keywords: [transfer, wallet, KYC, charges, fees, beneficiary, ledger, tier]
+---
+
+## Money movements
+
+| Use | Avoid | Why |
+| --- | --- | --- |
+| send money / transfer | remit, disburse | Match the spoken language of money |
+| the person you're sending to / recipient | beneficiary | "Beneficiary" reads as insurance/legalese |
+| description (optional) | narration | "Narration" is core-banking jargon that leaked into apps |
+| returned to your account | reversed | Use "reversed" only where users already use it; pair with a timeframe |
+| pending | processing, in flight | One word for one state, product-wide |
+
+## Charges
+
+- Call them **fees** in interfaces; "charges" is acceptable in statements.
+- State fees before confirmation, in naira, beside the amount: see [Currency](/docs/mechanics/currency).
+- Name the fee by cause: "transfer fee", "SMS alert fee", "card maintenance fee" — never "miscellaneous charges".
+
+## Identity and KYC
+
+- Spell out **Bank Verification Number (BVN)** and **National Identification Number (NIN)** on first use per flow.
+- Explain why at the point of asking, and what you can't see: "Your BVN lets us confirm your identity. It doesn't give us access to your other accounts."
+- Use **"verify your identity"**, not "complete your KYC" — KYC is the bank's task, identity is the user's.
+- Account tiers: name the benefit, not the regulation. "Upgrade to send up to ₦5,000,000 a day", not "Upgrade to Tier 3".
+
+## Savings and loans
+
+- State interest as both rate and naira where possible: "12% per year — about ₦1,000 monthly on this balance".
+- For loans, always show **total repayment** alongside instalments. "₦10,000 monthly for 6 months (₦60,000 total)".
+- Never euphemise penalties. "Late fee: ₦500 per week" beats "service adjustment".
+
+<DoDont>
+<Do>
+You'll get ₦10,000 now and pay back ₦11,500 in 30 days.
+</Do>
+<Dont>
+Loan disbursement of ₦10,000 attracts a 15% facility fee payable at tenor end.
+</Dont>
+</DoDont>
+
+## Related guidance
+
+- [Currency](/docs/mechanics/currency)
+- [Error messages](/docs/patterns/error-messages)
+- [Government IDs](/docs/nigeria/government-ids)
