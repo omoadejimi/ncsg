@@ -58,7 +58,7 @@ const whyItMatters = [
   },
   {
     title: "Consistency",
-    body: "Teams across banks, startups, and government keep solving the same writing problems alone. A common, open reference means consistent experiences for users everywhere.",
+    body: "An open reference can help content teams create consistent experiences for users everywhere.",
   },
 ];
 
