@@ -46,7 +46,7 @@ const featured = [
 const whyItMatters = [
   {
     title: "Over 500 languages, one interface",
-    body: "Most Nigerian users read products in English that is not their first language. Clear, plain writing is not a nicety — it is how the product works at all.",
+    body: "Because English is not the first language of many Nigerians, clear content can help improve user interaction.",
   },
   {
     title: "Mobile-first by necessity",
