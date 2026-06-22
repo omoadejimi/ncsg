@@ -13,32 +13,32 @@ import { site } from "@/lib/site";
 const featured = [
   {
     title: "Plain language",
-    description: "Write so a first-time smartphone user in Kano and a Lagos product manager both understand first time.",
+    description: "Explore the principles of writing plainly and how to help your users with it.",
     href: "/docs/foundations/plain-language",
   },
   {
     title: "Error messages",
-    description: "Say what happened, reassure people about their money, and show the way forward.",
+    description: "Discover how to write clear and user-friendly error content.",
     href: "/docs/patterns/error-messages",
   },
   {
     title: "Nigerian English",
-    description: "Standardise the words Nigerians actually use — airtime, BVN, POS — with confidence.",
+    description: "View relevant guidance on writing the Nigerian way.",
     href: "/docs/nigeria/nigerian-english",
   },
   {
     title: "Accessibility",
-    description: "Content that works on a ₦30,000 Android phone, over 3G, with a screen reader.",
+    description: "Explore UX content accessibility best practices and how to use them in your project.",
     href: "/docs/foundations/accessibility",
   },
   {
     title: "Financial terminology",
-    description: "Consistent language for transfers, wallets, KYC and charges across fintech products.",
+    description: "Discover consistent language use for the Nigerian financial communications space.",
     href: "/docs/nigeria/financial-terminology",
   },
   {
     title: "Translation principles",
-    description: "Approach Yoruba, Hausa, Igbo and Nigerian Pidgin as first-class languages, not afterthoughts.",
+    description: "View the principles of contextual translation of Nigerian languages.",
     href: "/docs/multilingual/translation-principles",
   },
 ];
@@ -155,10 +155,8 @@ export default function HomePage() {
               Built in the open
             </h2>
             <p className="mt-4 leading-relaxed text-ink-soft dark:text-[#A8B3AC]">
-              The guide belongs to the community that uses it. Anyone can propose
-              changes through pull requests, raise questions in discussions, or
-              join the editorial review that keeps the guidance evidence-based.
-              Decisions are made transparently under an open governance model.
+              Anyone can propose changes through pull requests, raise questions in discussions, or
+              join the editorial review team. Decisions are made transparently under an open governance model.
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
