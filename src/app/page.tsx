@@ -45,20 +45,20 @@ const featured = [
 
 const whyItMatters = [
   {
-    title: "Over 500 languages, one interface",
+    title: "Inclusiveness",
     body: "Because English is not the first language of many Nigerians, clear content can help improve user interaction.",
   },
   {
     title: "Mobile-first by necessity",
-    body: "The overwhelming majority of Nigerians reach the internet through low-cost Android phones on metered data. Every unnecessary word costs money and patience.",
+    body: "Many Nigerians connect to the internet through low-cost devices on metered data. Every unnecessary word costs money and patience.",
   },
   {
     title: "Words move money",
-    body: "In fintech, a vague error message creates panic about a double debit. Precise, honest copy is a trust and inclusion issue, not a polish issue.",
+    body: "When brands communicate precisely and honestly, they’ll build trust and generate more income.",
   },
   {
-    title: "Shared standards raise everyone",
-    body: "Teams across banks, startups and government keep solving the same writing problems alone. A common, open reference means consistent experiences for users everywhere.",
+    title: "Consistency",
+    body: "Teams across banks, startups, and government keep solving the same writing problems alone. A common, open reference means consistent experiences for users everywhere.",
   },
 ];
 
@@ -71,13 +71,13 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <div className="h-1.5 w-24 triband" aria-hidden="true" />
             <h1 className="mt-8 font-display text-5xl leading-[1.05] sm:text-7xl">
-              Write for Nigeria.
+              Write for Nigeria
               <br />
-              <em className="text-green-700 dark:text-green-500">Design for everyone.</em>
+              <em className="text-green-700 dark:text-green-500">Design for everyone</em>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft dark:text-[#A8B3AC]">
-              An open-source content style guide helping teams create clear,
-              inclusive and accessible digital experiences for Nigerian users.
+              The Nigerian Content Style Guide is an open-source guide designed to help
+              content teams create clear, inclusive, and accessible digital experiences for Nigerian users.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
