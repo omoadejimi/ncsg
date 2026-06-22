@@ -38,7 +38,7 @@ const featured = [
   },
   {
     title: "Translation principles",
-    description: "View the principles of contextual translation of Nigerian languages.",
+    description: "View the principles of localising Nigerian languages.",
     href: "/docs/multilingual/translation-principles",
   },
 ];
