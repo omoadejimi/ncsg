@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Public_Sans, Spline_Sans_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getSearchIndex } from "@/lib/docs";
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header searchIndex={searchIndex} />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
