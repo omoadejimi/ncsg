@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Public_Sans, Spline_Sans_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getSearchIndex } from "@/lib/docs";
@@ -81,6 +82,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
       </body>
+      {/*
+        Google Analytics 4. Next's official component loads gtag.js
+        efficiently (after the page is interactive) and automatically
+        tracks client-side navigations between pages — which the raw
+        snippet from Google would miss on a single-page-style app.
+      */}
+      <GoogleAnalytics gaId="G-H1H74WV81V" />
     </html>
   );
 }
