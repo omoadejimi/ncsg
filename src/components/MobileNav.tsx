@@ -20,11 +20,20 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
   const closeRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
-  // Close when the route changes (user tapped a link)
+  // Close when the route actually changes (user tapped a link).
+  //
+  // We track the previous pathname in a ref and only close when it truly
+  // changes. Without this guard, the effect also runs on first mount —
+  // which on some devices fired onClose() the instant the drawer opened,
+  // leaving only the empty "Contents" shell visible. Skipping the initial
+  // run fixes that.
+  const prevPath = useRef(pathname);
   useEffect(() => {
-    onClose();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+    if (prevPath.current !== pathname) {
+      prevPath.current = pathname;
+      onClose();
+    }
+  }, [pathname, onClose]);
 
   useEffect(() => {
     if (!open) return;
