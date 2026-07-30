@@ -1,6 +1,6 @@
 ---
 title: Error messages
-description: An error message should tell people what happened, reassure them about their money and data, and show them the way forward.
+description: An error message should tell people what happened, explain what it means for their money, data or progress, and show them what to do next.
 keywords: [errors, failed transaction, validation, BVN, transfer failed, reversal, fintech]
 ---
 
@@ -8,11 +8,11 @@ keywords: [errors, failed transaction, validation, BVN, transfer failed, reversa
 
 An error message is the product speaking at the exact moment trust is most fragile. In Nigerian fintech, that moment usually involves money: a transfer that hangs, a debit that may or may not have happened, a BVN that won't verify.
 
-Good error messages do three jobs, in this order:
+A good error message does three things, in this order:
 
-1. **Say what happened**, in plain language.
-2. **Say what it means** for the person's money, data or progress.
-3. **Say what to do next** — or that nothing is needed.
+1. Explain what happened in plain language.
+2. Explain what it means for the person's money, data or progress.
+3. Explain what to do next, or tell them that no action is needed.
 
 If a message cannot do all three, it is not finished.
 
@@ -20,15 +20,15 @@ If a message cannot do all three, it is not finished.
 
 ### Lead with the situation, not the system
 
-Describe the problem from the user's side of the screen. "Error 51" describes the system. "You don't have enough money in this account" describes the situation.
+Describe the problem from the user's point of view. 'Error 51' describes the system. 'You don't have enough money in this account' describes the situation.
 
 ### Reassure about money first
 
 In any payment flow, the user's first fear is a double debit. If money has not moved, say so immediately. If it has, say exactly where it is and when it returns.
 
-### Never blame the user
+### Don't blame the user
 
-Write "Check the account number" rather than "You entered an invalid account number". The fix matters; fault does not.
+Write 'Check the account number' rather than 'You entered an invalid account number'. The fix matters; fault does not.
 
 ### Be honest about uncertainty
 
@@ -36,7 +36,7 @@ If the system genuinely doesn't know whether a transaction completed, say that �
 
 ### Drop the theatre
 
-No "Oops!", no sad-face emoji, no exclamation marks. A failed transfer is not a whimsical moment. Calm, plain sentences read as competence.
+No 'Oops!', no sad-face emoji, no exclamation marks. A failed transfer is not a whimsical moment. Calm, plain sentences read as competence.
 
 ## Do and Don't
 
@@ -90,11 +90,11 @@ Request timeout. Please contact support.
 
 ### Address the double-debit fear directly
 
-Years of "debited but not credited" experiences mean Nigerian users assume the worst when a payment fails. State the position of their money explicitly — *your money has not left your account* — even when it feels obvious to the team.
+Years of 'debited but not credited' experiences mean Nigerian users assume the worst when a payment fails. State the position of their money explicitly — *your money has not left your account* — even when it feels obvious to the team.
 
 ### Give reversal timelines people can hold you to
 
-"Your money will be reversed" is folklore; "within 24 hours" is a commitment. Use a concrete window your operations team actually meets, and prefer "returned to your account" over the jargon "reversed" where space allows.
+'Your money will be reversed' is folklore; 'within 24 hours' is a commitment. Use a concrete window your operations team actually meets, and prefer "returned to your account" over the jargon "reversed" where space allows.
 
 ### Plan for unreliable networks as the normal case
 
@@ -106,7 +106,7 @@ Avoid auto-retry loops that silently burn data. If the app will retry, say so on
 
 ### Avoid carrier-grade jargon
 
-"Beneficiary", "narration", "switch failure" and "kindly revert" belong in back-office systems. People send money *to someone*, with *a description*, and things *fail*.
+'Beneficiary', 'narration', 'switch failure' and 'kindly revert' belong in back-office systems. People send money *to someone*, with *a description*, and things *fail*.
 
 ## Accessibility considerations
 
