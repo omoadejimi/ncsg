@@ -57,7 +57,7 @@ Please try again later.
 <Do>
 Check the BVN and try again.
 
-A BVN is 11 digits. Dial *565*0# on the phone number linked to your bank account to see yours.
+A BVN is 11 digits. Dial `*565*0#` on the phone number linked to your bank account to see yours.
 </Do>
 <Dont>
 Invalid BVN.
@@ -107,6 +107,18 @@ Avoid auto-retry loops that silently burn data. If the app will retry, say so on
 ### Avoid carrier-grade jargon
 
 'Beneficiary', 'narration', 'switch failure' and 'kindly revert' belong in back-office systems. People send money *to someone*, with *a description*, and things *fail*.
+
+### Reassure users during security checks, not just failures
+<DoDont>
+    <Do>
+    We noticed a login attempt from a new device. If this was you, no action is needed.
+    </Do>
+  	<Dont>
+    Suspicious activity detected on your account.
+    </Dont>
+</DoDont>
+
+   Fintech apps flag security events constantly, new device logins, unusual transfer patterns, failed verification attempts. These aren't failures, but a vague, alarming message makes users assume the worst about their money before they've even read the details. Follow the same rule as any error message here: say what happened, say what it means for their account, and say what to do next, or that nothing is needed.
 
 ## Accessibility considerations
 
