@@ -8,7 +8,7 @@ keywords: [naira, NGN, kobo, ₦, money formatting, fees]
 
 Use **₦** directly before the amount with no space: **₦5,000**. 
 
-If a system genuinely cannot render ₦ (some SMS gateways and older devices), fall back to **NGN 5,000** — never a bare "N", which is ambiguous in running text.
+If a system cannot render ₦ reliably, use **NGN 5,000** — never a bare "N", which is ambiguous in running text.
 
 ## Formatting amounts
 
@@ -27,6 +27,14 @@ Transfer fee: N26.875
 ## Words or symbols
 
 When writing interface copy, opt for the symbol. In long-form content where an amount is spoken about rather than displayed, you can use "naira" in lowercase. For example: "a few thousand naira".
+
+For SMS, check the encoding and segment count as well as display support. The naira symbol can change the encoding and cost. See [Notifications](/docs/patterns/notifications).
+
+Amounts in these examples demonstrate formatting, not current fees. Use the verified fee and the product’s rounding rules in live content.
+
+## Evidence and limits
+
+**Editorial convention.** These examples show formatting, not current product fees. Check rounding, display and pronunciation in your service; verify SMS behaviour with the provider. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 

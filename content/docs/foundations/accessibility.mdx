@@ -22,14 +22,14 @@ This page explains how to create content that works for:
 ## Writing for screen readers
 
 - When using links, make them descriptive. This gives users who use screen readers an idea of where the link will take them before selecting it. For example, 'View your statement', not 'click here'.
-- Your buttons should say what they do. For example, 'Send ₦5,000", not 'Submit' or 'Continue' where a specific verb fits.
-- Headings should form a real outline. Use One h1 per page, don't skip levels.
-- Alt texts should focus on what matters to users. Describe the information the image carries, not its appearance. Decorative images should get empty alt texts.
-- Avoid ALL CAPS and stylised Unicode. Both can be read out letter by letter or skipped entirely.
+- Your buttons should say what they do. For example, 'Send ₦5,000', not 'Submit' or 'Continue' where a specific verb fits.
+- Headings should form a real outline. Use a descriptive main heading and nest subheadings to reflect the content structure.
+- Alternative text should focus on what matters to users. Describe the information the image carries, not its appearance. Decorative images should get empty alternative text (`alt=""`).
+- Avoid ALL CAPS and stylised Unicode. Stylised Unicode can change pronunciation or make text harder to interpret. Test important abbreviations with the assistive technologies your audience uses.
 
 ## Writing for low bandwidth and low-end devices
 
-- Front-load every page and message. This makes the content accessible even when users have slow or no internet connection.
+- Put essential information first so people can find it quickly. Offline access needs an implementation and caching strategy; shorter text alone does not make a service work without a connection.
 - Keep transactional SMS and push copy short. They may be the only channel that users have access to.
 - When writing for digital interfaces, don't put essential information only in images.
 
@@ -39,8 +39,12 @@ This page explains how to create content that works for:
 - Let people copy reference numbers with one selection, and say so. For example, "Select to copy".
 
 <Note>
-When testing, include at least one session over a throttled 3G connection on a sub-₦80,000 Android device. If the content survives that, it should survive anything.
+Test on devices and connections relevant to your audience, including limited data and unreliable connectivity. Also test keyboard access, zoom, reflow and screen-reader use with disabled participants. One device or connection test cannot establish accessibility or WCAG conformance.
 </Note>
+
+## Evidence and limits
+
+**Standards-informed guidance.** WCAG 2.2 defines accessibility requirements; the writing examples are editorial suggestions. Test the implementation with disabled people and assistive technology. This page does not establish conformance. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 

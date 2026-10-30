@@ -1,32 +1,47 @@
 ---
 title: Translation principles
-description: Approach Yoruba, Hausa, Igbo and Nigerian Pidgin as first-class product languages — translated for meaning, reviewed by speakers, tested with users.
-keywords: [Yoruba, Hausa, Igbo, Pidgin, localisation, translation, tone]
+description: "Plan, translate, review and maintain content for the languages your audience uses."
+keywords: [Yoruba, Hausa, Igbo, Pidgin, localisation, translation, tone, language, Unicode]
 ---
 
+## Choose a manageable starting point
 
-## Principles
+Choose languages through audience research and available translation support. Yoruba, Hausa, Igbo and Nigerian Pidgin are examples, not a complete list of Nigerian languages. Do not infer a person’s preferred language from their name or location.
 
-### 1. Source text must be plain first
+Start with one complete task in one additional language. Provide a clear language choice and explain when content is available only in another language.
 
-Idioms, jokes and corporate English fail in translation. Fix the English with [plain language](/docs/foundations/plain-language) before translating. This reduces translation cost and error.
+## A translation workflow
 
-### 2. Use professional speakers, review with users
+1. **Prepare the source.** Make the meaning clear. Give each string an ID and record the task, screen, audience, tone, variables and character constraints. Include errors and recovery states.
+2. **Agree terminology.** Choose a translator with relevant language and subject knowledge. Record the language variety, orthography and terms with an explanation of each decision.
+3. **Translate for meaning.** Preserve warnings, consent choices and consequences. Treat Nigerian Pidgin with the same care as other languages. Machine output needs human review before publication.
+4. **Review independently.** Ask another qualified speaker to check meaning, spelling, tone and task context. Resolve disagreements in a shared decision log.
+5. **Test the interface.** Allow text to wrap and expand. Check small screens, enlarged text, Unicode, diacritics, fonts and line breaks. Mark page and passage languages correctly in the implementation and test available screen-reader pronunciation.
+6. **Check comprehension.** Ask intended users to complete the task and explain key information in their own words. Record the sample, language variety and limits of the test.
+7. **Maintain both versions.** Name an owner and backup, keep source and translation versions linked, and review translations when the source changes. Explain any fallback rather than silently switching languages.
 
-Ensure you test translations with actual speakers before you publish.
+Do not use a fixed expansion percentage as a guarantee that a translated layout will work. See [W3C guidance on text size in translation](https://www.w3.org/International/articles/article-text-size/) and [language declarations](https://www.w3.org/International/questions/qa-html-language-declarations).
 
+## A reusable translation record
 
-### 3. Pidgin is a full language
+For each string, record:
 
-Nigerian Pidgin reaches across regions and literacy levels. Treat it with the same rigour as other Nigerian languages.
+- string ID and source version
+- source text, screen and intended action
+- language and variety
+- proposed translation and terminology notes
+- translator and independent reviewer
+- comprehension and interface test results, including unresolved issues
+- publication status and next review trigger.
 
+This is a workflow template. NCSG does not present an unreviewed translation here as an approved language pattern.
 
-### 4. Plan for expansion
+## Evidence and limits
 
-Design buttons and layouts for +35% text length, and never truncate a warning to fit.
-
+**Standards-informed workflow; pilot needed.** W3C resources support the implementation checks. No reviewed NCSG translation or language comprehension study is presented here. Validate the workflow through a limited pilot before expanding coverage. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 
 - [Plain language](/docs/foundations/plain-language)
 - [Nigerian English](/docs/nigeria/nigerian-english)
+- [Inclusive writing](/docs/foundations/inclusive-writing)

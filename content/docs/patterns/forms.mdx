@@ -1,41 +1,47 @@
 ---
 title: Forms
-description: Ask only for what you need, explain why you need it, and help people get it right the first time.
-keywords: [forms, labels, hint text, validation, KYC, onboarding]
+description: "Ask only for what the service needs, explain sensitive requests and help people correct errors."
+keywords: [forms, labels, hint text, validation, KYC, onboarding, BVN, postcode]
 ---
 
-## Ask less
+## Ask for what the task needs
 
-Every field costs completion. Before adding one, name the decision it powers. KYC requirements are real, but "we've always asked" is not a regulation.
+For every field, record why the service needs it and whether it must be required. Confirm regulatory requirements with the responsible team rather than relying on an existing form.
 
 ## Labels and hints
 
-- Labels above fields, always visible — **never placeholder-only labels**, which vanish on focus and fail screen readers.
-- Use hint text for format examples: "For example, 0803 123 4567".
-- Explain sensitive requests inline: "We need your BVN to verify your identity, as required by the CBN. We can't see your bank balance."
+- Keep a visible label associated with each field. Placeholder text alone disappears as people type and is not a replacement for a label.
+- Put examples and format instructions in persistent hint text, associated with the input.
+- Explain sensitive requests where they occur. State the information used and the purpose of the check, based on the actual service and privacy notice.
 
-<CopyExample label="BVN field">
+<CopyExample label="Illustrative BVN field">
 **Label:** Bank Verification Number (BVN)
 
-**Hint:** 11 digits. Dial `*565*0#` to check yours.
+**Hint:** 11 digits. Dial `*565*0#` from the phone number registered for your BVN to check yours. A ₦20 service fee applies.
 
-**Reassurance:** Your BVN doesn't give us access to your bank accounts.
+**Purpose template:** We use your BVN to [specific identity check]. [Explain the information accessed and link to privacy information].
 </CopyExample>
+
+The retrieval instructions and fee are sourced and dated in [Government IDs](/docs/nigeria/government-ids). Replace the purpose template with verified information before use. Do not add a blanket claim about account access.
 
 ## Validation
 
-- Validate on submit or on leaving the field — not on every keystroke.
-- Error text says how to fix, not just what's wrong. See [Error messages](/docs/patterns/error-messages).
-- On submit failure, show an error summary at the top, move focus to it, and link each item to its field.
+- Avoid showing errors while someone is still entering a valid value. Choose validation timing through testing.
+- Explain how to correct a problem. Associate each error with its field and do not rely on colour alone.
+- For a failed submission, use a tested error-summary pattern, with focus moved to the summary and links to the affected fields. Preserve entered information where safe.
+- Distinguish invalid input from a service or connection problem. See [Error messages](/docs/patterns/error-messages) and the [GOV.UK error-summary pattern](https://design-system.service.gov.uk/components/error-summary/).
 
-## Nigerian-specific notes
+## Nigerian service considerations
 
-- Phone numbers: accept 0803…, +234 803… and 234803… and normalise silently. Don't make users learn your format.
-- Names: see [Inclusive writing](/docs/foundations/inclusive-writing) — no "letters only" validation.
-- Addresses: see [Address formats](/docs/nigeria/address-formats) — don't require postcodes.
+- Accept supported local and international phone formats, including spaces. Normalise only when the number is unambiguous; confirm country context rather than guessing.
+- Support the names your audience uses. See [Inclusive writing](/docs/foundations/inclusive-writing).
+- Require address fields only when needed for the task. Help people find a required postcode; never invent one. See [Address formats](/docs/nigeria/address-formats).
+
+## Evidence and limits
+
+**Standards-informed guidance and illustrative templates.** The linked GOV.UK pattern supports form-error implementation; the NIBSS source supports BVN retrieval. Neither validates the service’s data-access claims or all field choices. Test the complete journey. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 
 - [Error messages](/docs/patterns/error-messages)
 - [Government IDs](/docs/nigeria/government-ids)
-
