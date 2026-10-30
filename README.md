@@ -124,6 +124,18 @@ Built to WCAG 2.2 AA:
 - Versioned releases with a generated changelog page
 - Community showcase of products applying the guide
 
+## Testing technical fixes
+
+Run `npm ci`, then `npx playwright install chromium` once to install the test
+browser. Build the site with `npm run build`, then run `npm run test:e2e`.
+The tests start a local production server on port 3100 and cover search
+keyboard and pointer behaviour, small-screen table layout, literal BVN codes,
+and production metadata across all public pages. They block analytics requests.
+
+The mobile project emulates Chromium on a phone. These checks do not replace
+testing with real devices or assistive technology.
+
 ## Licence
 
 MIT. Guidance content may alternatively be used under CC BY 4.0 — see LICENSE.
+

@@ -8,6 +8,7 @@ import { site } from "@/lib/site";
 import Sidebar from "@/components/Sidebar";
 import TableOfContents from "@/components/TableOfContents";
 import { mdxComponents } from "@/components/mdx";
+import { mdxOptions } from "@/lib/mdx";
 
 interface Props {
   params: { slug: string[] };
@@ -41,6 +42,7 @@ export default async function DocPage({ params }: Props) {
   const { content } = await compileMDX({
     source: doc.content,
     components: mdxComponents,
+    options: { mdxOptions },
   });
 
   // Prev/next pagination from the curated navigation order
@@ -70,7 +72,7 @@ export default async function DocPage({ params }: Props) {
       />
       <Sidebar />
 
-      <main id="main-content" className="min-w-0 py-8 lg:px-10 lg:py-10">
+      <main id="main-content" tabIndex={-1} className="min-w-0 py-8 lg:px-10 lg:py-10">
         <article className="mx-auto max-w-content">
           {section && (
             <p className="text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-500">
@@ -135,3 +137,4 @@ export default async function DocPage({ params }: Props) {
     </div>
   );
 }
+
