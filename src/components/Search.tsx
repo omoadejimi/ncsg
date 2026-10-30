@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export interface SearchRecord {
   href: string;
@@ -22,7 +22,8 @@ export interface SearchRecord {
  * swap this for Pagefind without changing the UI.
  *
  * Accessibility:
- * - role="dialog" + aria-modal, Escape to close
+ * - Native modal dialog makes background content inert, contains focus
+ *   and returns focus to the opener when dismissed
  * - Combobox pattern: aria-activedescendant tracks the highlighted
  *   result while focus stays in the input, so screen readers announce
  *   each result as you arrow through
@@ -40,19 +41,41 @@ export default function Search({
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const destinationRef = useRef<string | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (open) {
-      setQuery("");
-      setSelected(0);
-      // Move focus into the dialog
-      requestAnimationFrame(() => inputRef.current?.focus());
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    const dialog = dialogRef.current;
+    if (!open || !dialog) return;
+
+    const opener = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    setQuery("");
+    setSelected(0);
+    dialog.showModal();
+    inputRef.current?.focus();
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (opener instanceof HTMLElement && opener.isConnected) {
+        opener.focus({ preventScroll: true });
+      }
+    };
   }, [open]);
+
+  useEffect(() => {
+    if (open || destinationRef.current !== pathname) return;
+    const frame = requestAnimationFrame(() => {
+      document.getElementById("main-content")?.focus();
+      destinationRef.current = null;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, open]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -83,15 +106,15 @@ export default function Search({
   }, [query, index]);
 
   function go(href: string) {
+    destinationRef.current = href;
     onClose();
     router.push(href);
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
-    if (e.key === "Escape") onClose();
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      setSelected((s) => Math.min(s + 1, results.length - 1));
+      setSelected((s) => Math.max(0, Math.min(s + 1, results.length - 1)));
     }
     if (e.key === "ArrowUp") {
       e.preventDefault();
@@ -106,12 +129,28 @@ export default function Search({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50">
-      <div className="absolute inset-0 bg-ink/40" aria-hidden="true" onClick={onClose} />
+    <dialog
+      ref={dialogRef}
+      aria-label="Search the guide"
+      onKeyDown={(e) => {
+        // Keep Tab inside the modal rather than moving to browser chrome.
+        if (e.key !== "Tab") return;
+        if (e.shiftKey && document.activeElement === inputRef.current) {
+          e.preventDefault();
+          closeRef.current?.focus();
+        } else if (!e.shiftKey && document.activeElement === closeRef.current) {
+          e.preventDefault();
+          inputRef.current?.focus();
+        }
+      }}
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
+      className="fixed inset-0 m-0 h-full max-h-none w-full max-w-none border-0 bg-transparent p-0 text-inherit backdrop:bg-ink/40"
+    >
+      <div className="absolute inset-0" aria-hidden="true" onClick={onClose} />
       <div
-        role="dialog"
-        aria-modal="true"
-        aria-label="Search the guide"
         className="absolute inset-x-0 top-0 mx-auto mt-0 w-full max-w-xl bg-paper shadow-xl sm:mt-20 sm:rounded-md dark:bg-paper-dark"
       >
         <div className="flex items-center gap-3 border-b border-line px-4 dark:border-line-dark">
@@ -123,8 +162,9 @@ export default function Search({
             ref={inputRef}
             type="search"
             role="combobox"
+            aria-autocomplete="list"
             aria-expanded={results.length > 0}
-            aria-controls="search-results"
+            aria-controls={results.length > 0 ? "search-results" : undefined}
             aria-activedescendant={results[selected] ? `result-${selected}` : undefined}
             aria-label="Search the guide"
             placeholder="Search guidance, e.g. error messages, BVN, currency"
@@ -137,8 +177,10 @@ export default function Search({
             className="h-14 w-full bg-transparent text-base outline-none placeholder:text-ink-mute"
           />
           <button
+            ref={closeRef}
             type="button"
             onClick={onClose}
+            aria-label="Close search"
             className="rounded-sm border border-line px-2 py-1 text-xs text-ink-mute hover:text-ink dark:border-line-dark dark:hover:text-white"
           >
             Esc
@@ -147,22 +189,21 @@ export default function Search({
 
         {/* Screen-reader announcement of result count */}
         <p className="sr-only" aria-live="polite">
-          {query ? `${results.length} results` : ""}
+          {query ? `${results.length} ${results.length === 1 ? "result" : "results"}` : ""}
         </p>
 
-        <ul id="search-results" role="listbox" aria-label="Search results" className="max-h-[60vh] overflow-y-auto p-2">
-          {results.map((record, i) => (
-            <li
-              key={record.href}
-              id={`result-${i}`}
-              role="option"
-              aria-selected={i === selected}
-            >
-              <button
-                type="button"
+        {results.length > 0 && (
+          <ul id="search-results" role="listbox" aria-label="Search results" className="max-h-[60vh] overflow-y-auto p-2">
+            {results.map((record, i) => (
+              <li
+                key={record.href}
+                id={`result-${i}`}
+                role="option"
+                aria-selected={i === selected}
                 onClick={() => go(record.href)}
+                onMouseDown={(e) => e.preventDefault()}
                 onMouseEnter={() => setSelected(i)}
-                className={`block w-full rounded-sm px-3 py-3 text-left ${
+                className={`block w-full cursor-pointer rounded-sm px-3 py-3 text-left ${
                   i === selected ? "bg-green-50 dark:bg-line-dark" : ""
                 }`}
               >
@@ -172,27 +213,27 @@ export default function Search({
                 <span className="mt-0.5 block text-xs text-ink-mute dark:text-[#8FA097]">
                   {record.section} · <Highlight text={record.description} query={query} />
                 </span>
-              </button>
-            </li>
-          ))}
+              </li>
+            ))}
+          </ul>
+        )}
 
-          {query && results.length === 0 && (
-            <li className="px-3 py-8 text-center text-sm text-ink-soft dark:text-[#A8B3AC]">
-              <p className="font-semibold">No results for "{query}"</p>
-              <p className="mt-1">
-                Try a different word, or check the sections in the navigation.
-              </p>
-            </li>
-          )}
+        {query && results.length === 0 && (
+          <div className="px-3 py-8 text-center text-sm text-ink-soft dark:text-[#A8B3AC]">
+            <p className="font-semibold">No results for "{query}"</p>
+            <p className="mt-1">
+              Try a different word, or check the sections in the navigation.
+            </p>
+          </div>
+        )}
 
-          {!query && (
-            <li className="px-3 py-6 text-sm text-ink-mute dark:text-[#8FA097]">
-              Start typing to search every page. Use ↑ ↓ to move and Enter to open.
-            </li>
-          )}
-        </ul>
+        {!query && (
+          <p className="px-3 py-6 text-sm text-ink-mute dark:text-[#8FA097]">
+            Start typing to search every page. Use ↑ ↓ to move and Enter to open.
+          </p>
+        )}
       </div>
-    </div>
+    </dialog>
   );
 }
 
@@ -210,3 +251,4 @@ function Highlight({ text, query }: { text: string; query: string }) {
     </>
   );
 }
+

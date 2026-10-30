@@ -4,7 +4,8 @@ export const site = {
   shortName: "NCSG",
   description:
     "An open-source content style guide helping teams create clear, inclusive and accessible digital experiences for Nigerian users.",
-  url: "https://ncsg-lukap42t7-huerebel.vercel.app/", // update after deployment
+  url: "https://ncsg.guide",
   github: "https://github.com/omoadejimi/ncsg",
   locale: "en_NG",
 };
+
