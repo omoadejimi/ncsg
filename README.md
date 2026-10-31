@@ -93,7 +93,8 @@ src/
   anchors and the "On this page" list in lockstep with two fewer dependencies.
 - **Search is a build-time index shipped to the client** — right-sized for a
   documentation site of this scale: instant results, zero requests per
-  keystroke, works offline. Swap in Pagefind behind the same dialog if the
+  keystroke after the page has loaded. This does not make the whole guide
+  available offline. Swap in Pagefind behind the same dialog if the
   guide grows past a few hundred pages.
 - **Curated navigation data, not filesystem-generated** — editors control
   grouping and order deliberately, as GOV.UK does.
@@ -102,18 +103,20 @@ src/
 
 ## Accessibility
 
-Built to WCAG 2.2 AA:
+The site targets WCAG 2.2 AA. These implementation features support that goal;
+they do not establish full conformance:
 
 - Skip-to-content link as the first focusable element on every page
-- Semantic landmarks, one `h1` per page, no skipped heading levels
+- Semantic landmarks and a main page heading
 - 2px visible focus rings on every interactive element
-- Mobile drawer and search dialog: `role="dialog"`, `aria-modal`, Escape to
-  close, focus moved in and trapped, body scroll locked
+- Native modal mobile navigation and search, with Escape dismissal, focus
+  containment and restoration, inert background content and scroll locking
 - Search follows the combobox pattern (`aria-activedescendant`) with a live
   region announcing result counts
 - Do/Don't cards pair colour with text labels — meaning never colour-alone
 - `prefers-reduced-motion` disables all animation globally
-- Text contrast ≥ 4.5:1 in both themes; tap targets ≥ 40px on mobile
+- Contrast, target spacing, zoom and assistive-technology coverage still need
+  the manual verification recorded in the audit follow-up
 
 ## Future enhancements
 
@@ -121,7 +124,7 @@ Built to WCAG 2.2 AA:
 - Yoruba, Hausa, Igbo and Pidgin translations of the guide itself (i18n routing)
 - A linter package (`ncsg-lint`) checking copy against the vocabulary tables
 - Figma plugin surfacing guidance beside designs
-- Versioned releases with a generated changelog page
+- Reviewed, versioned releases alongside the on-site changelog
 - Community showcase of products applying the guide
 
 ## Testing technical fixes
@@ -129,11 +132,16 @@ Built to WCAG 2.2 AA:
 Run `npm ci`, then `npx playwright install chromium` once to install the test
 browser. Build the site with `npm run build`, then run `npm run test:e2e`.
 The tests start a local production server on port 3100 and cover search
-keyboard and pointer behaviour, small-screen table layout, literal BVN codes,
-and production metadata across all public pages. They block analytics requests.
+keyboard and pointer behaviour, viewport-sized mobile navigation, focus isolation
+and restoration, keyboard table scrolling, literal BVN codes, no-JavaScript
+redirects, and production and social metadata across all 24 public pages.
+They block analytics requests. The sharing image is generated at build time.
 
 The mobile project emulates Chromium on a phone. These checks do not replace
 testing with real devices or assistive technology.
+
+See [the audit follow-up](docs/post-merge-audit-status.md) for remaining private
+reporting, editorial ownership, hosting and manual verification requirements.
 
 ## Licence
 

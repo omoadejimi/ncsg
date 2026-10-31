@@ -7,5 +7,11 @@ export const site = {
   url: "https://ncsg.guide",
   github: "https://github.com/omoadejimi/ncsg",
   locale: "en_NG",
+  socialImage: {
+    url: "/social-card.png",
+    width: 1200,
+    height: 630,
+    alt: "Nigerian Content Style Guide — Write for Nigeria. Design for everyone.",
+  },
 };
 

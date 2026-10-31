@@ -4,6 +4,7 @@ import { Callout, Note, Warning } from "./Callout";
 import { DoDont, Do, Dont } from "./DoDont";
 import { CopyExample } from "./CopyExample";
 import { Example } from "./Example";
+import { ScrollableTable } from "./ScrollableTable";
 
 /**
  * MDX component map.
@@ -88,11 +89,7 @@ export const mdxComponents = {
     />
   ),
   // Tables get horizontal scroll on small screens instead of breaking layout
-  table: (props: any) => (
-    <div className="mt-6 overflow-x-auto">
-      <table className="w-full border-collapse text-sm" {...props} />
-    </div>
-  ),
+  table: ScrollableTable,
   th: (props: any) => (
     <th
       className="border-b-2 border-line px-3 py-2 text-left font-semibold dark:border-line-dark"

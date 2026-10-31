@@ -64,7 +64,11 @@ const whyItMatters = [
 
 export default function HomePage() {
   return (
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "WebSite",
+        "@id": `${site.url}/#website`, name: site.name, alternateName: site.shortName, url: site.url,
+      }) }} />
       {/* ---- Hero ---- */}
       <section className="border-b border-line dark:border-line-dark">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">

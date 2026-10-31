@@ -133,6 +133,13 @@ export default function Search({
       ref={dialogRef}
       aria-label="Search the guide"
       onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          // Prevent the native search input from consuming Escape just to clear.
+          e.preventDefault();
+          e.stopPropagation();
+          onClose();
+          return;
+        }
         // Keep Tab inside the modal rather than moving to browser chrome.
         if (e.key !== "Tab") return;
         if (e.shiftKey && document.activeElement === inputRef.current) {

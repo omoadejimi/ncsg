@@ -23,14 +23,23 @@ export function generateMetadata({ params }: Props): Metadata {
   const doc = getDocBySlug(params.slug);
   if (!doc) return {};
   return {
-    title: doc.title,
+    title: doc.seoTitle,
     description: doc.description,
     alternates: { canonical: doc.href },
     openGraph: {
-      title: doc.title,
+      title: `${doc.seoTitle} — ${site.shortName}`,
       description: doc.description,
       url: `${site.url}${doc.href}`,
       type: "article",
+      siteName: site.name,
+      locale: site.locale,
+      images: [site.socialImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${doc.seoTitle} — ${site.shortName}`,
+      description: doc.description,
+      images: [site.socialImage],
     },
   };
 }
@@ -61,6 +70,7 @@ export default async function DocPage({ params }: Props) {
     headline: doc.title,
     description: doc.description,
     url: `${site.url}${doc.href}`,
+    ...(doc.updated ? { dateModified: doc.updated } : {}),
     isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
   };
 
@@ -88,6 +98,13 @@ export default async function DocPage({ params }: Props) {
             </p>
           )}
           <div className="mt-2">{content}</div>
+
+          <aside aria-label="Page maintenance" className="mt-10 border-t border-line pt-4 text-sm leading-relaxed text-ink-soft dark:border-line-dark dark:text-[#A8B3AC]">
+            <p>Responsible role: {doc.owner}. <Link href="/docs/operations/governance#content-maintenance" className="underline">How maintenance works</Link>.</p>
+            {doc.updated && <p>Last edited: <time dateTime={doc.updated}>{new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${doc.updated}T00:00:00Z`))}</time>.</p>}
+            <p>{doc.reviewStatus}. An edit date does not establish specialist approval.</p>
+            <p>Review trigger: {doc.reviewTrigger}.</p>
+          </aside>
 
           {/* Prev / next pagination */}
           <nav

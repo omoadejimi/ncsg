@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const docs = getAllDocs().map((doc) => ({
     url: `${site.url}${doc.href}`,
+    ...(doc.updated ? { lastModified: doc.updated } : {}),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

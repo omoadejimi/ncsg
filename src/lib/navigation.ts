@@ -66,6 +66,7 @@ export const navigation: NavSection[] = [
       { title: "Proposal process", href: "/docs/operations/proposal-process" },
       { title: "Governance", href: "/docs/operations/governance" },
       { title: "Code of conduct", href: "/docs/operations/code-of-conduct" },
+      { title: "Changelog", href: "/docs/operations/changelog" },
     ],
   },
 ];

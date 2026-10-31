@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import Search, { type SearchRecord } from "./Search";
@@ -15,6 +15,7 @@ import { site } from "@/lib/site";
 export default function Header({ searchIndex }: { searchIndex: SearchRecord[] }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   // "/" opens search from anywhere (skipped while typing in a field) —
   // a familiar shortcut from GitHub and GOV.UK-style documentation sites.
@@ -24,6 +25,7 @@ export default function Header({ searchIndex }: { searchIndex: SearchRecord[] })
       const typing = ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName);
       if (e.key === "/" && !typing) {
         e.preventDefault();
+        setMenuOpen(false);
         setSearchOpen(true);
       }
     }
@@ -88,7 +90,7 @@ export default function Header({ searchIndex }: { searchIndex: SearchRecord[] })
       </div>
 
       <Search open={searchOpen} onClose={() => setSearchOpen(false)} index={searchIndex} />
-      <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileNav open={menuOpen} onClose={closeMenu} />
     </header>
   );
 }
