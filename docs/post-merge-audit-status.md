@@ -29,7 +29,7 @@ This records the implementation scope for the audit dated 31 October 2026. Propo
 ## Local validation on 31 October 2026
 
 - The production build passes; content pages, the icon and the social image are statically generated.
-- All 30 Playwright checks pass across desktop and mobile Chromium projects, including navigation at widths 320, 375 and 768, pointer and keyboard dismissal, destination focus, redirects without JavaScript and social metadata across 24 content URLs.
+- All 32 Playwright checks pass across desktop and mobile Chromium projects, including navigation at widths 320, 375 and 768, short landscape scrolling at 667 by 375, pointer and keyboard dismissal, destination focus, redirects without JavaScript and social metadata across 24 content URLs.
 - Twenty-eight axe scans found no violations under the configured WCAG A and AA tags through 2.2 and best practices: 24 desktop pages, the open mobile menu, two narrow guidance pages and a dark-theme page.
 - Axe left seven symbol contrast nodes for review: six decorative, aria-hidden arrows on the homepage and the naira symbol in Currency. Computed foreground/background pairs gave 16.48:1 in the tested default light state and 15.61:1 in the default dark state. This does not cover every interaction state or replace a complete visual review.
 - Visually checked the repaired mobile drawer, the sharing image and the dark-theme changelog. No assistive-technology session or physical-device test was conducted.

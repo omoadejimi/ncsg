@@ -60,6 +60,21 @@ test("mobile menu supports pointer dismissal, same-page navigation and destinati
   await expect(page.getByRole("main")).toBeFocused();
 });
 
+test("short landscape menu exposes the last link without hiding the close control", async ({ page }) => {
+  await page.setViewportSize({ width: 667, height: 375 });
+  await page.goto(principles);
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  const dialog = page.getByRole("dialog", { name: "Site navigation" });
+  const lastLink = dialog.getByRole("link", { name: "Changelog", exact: true });
+  await lastLink.scrollIntoViewIfNeeded();
+  await expect(lastLink).toBeInViewport();
+  await expect(dialog.getByRole("button", { name: "Close navigation menu" })).toBeInViewport();
+  await lastLink.click();
+  await expect(page).toHaveURL(/operations\/changelog$/);
+  await expect(dialog).toHaveCount(0);
+  await expect(page.getByRole("main")).toBeFocused();
+});
+
 test("search dismisses a filled input with one Escape and finds offline guidance", async ({ page }) => {
   await page.goto(principles);
   const trigger = page.getByRole("button", { name: /^Search the guide/ });
