@@ -13,12 +13,12 @@ import { site } from "@/lib/site";
 const featured = [
   {
     title: "Plain language",
-    description: "Help people understand information and complete tasks.",
+    description: "Help users understand information and complete tasks.",
     href: "/docs/foundations/plain-language",
   },
   {
     title: "Error messages",
-    description: "Explain problems and give people a useful next action.",
+    description: "Explain problems and give users a useful next action.",
     href: "/docs/patterns/error-messages",
   },
   {
@@ -33,12 +33,12 @@ const featured = [
   },
   {
     title: "Financial terminology",
-    description: "Explain fees, transfers and identity checks clearly.",
+    description: "Explain fees, transfers, and identity checks clearly.",
     href: "/docs/nigeria/financial-terminology",
   },
   {
     title: "Translation principles",
-    description: "Plan, review and maintain multilingual content.",
+    description: "Plan, review, and maintain multilingual content.",
     href: "/docs/multilingual/translation-principles",
   },
 ];
@@ -81,7 +81,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft dark:text-[#A8B3AC]">
               The Nigerian Content Style Guide is an open-source guide designed to help
-              content teams create clear, inclusive and accessible digital experiences for people in Nigeria.
+              content and product teams create clear, inclusive, and accessible digital experiences for Nigerian users.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
