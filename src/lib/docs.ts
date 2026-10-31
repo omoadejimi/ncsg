@@ -24,6 +24,11 @@ export interface DocMeta {
   href: string;
   title: string;
   description: string;
+  seoTitle: string;
+  updated?: string;
+  owner: string;
+  reviewStatus: string;
+  reviewTrigger: string;
   keywords: string[];
   headings: DocHeading[];
 }
@@ -74,6 +79,11 @@ export function getAllDocs(): Doc[] {
       href: `/docs/${slug.join("/")}`,
       title: data.title ?? slug[slug.length - 1],
       description: data.description ?? "",
+      seoTitle: data.seoTitle ?? data.title ?? slug[slug.length - 1],
+      updated: data.updated,
+      owner: data.owner ?? "NCSG maintainers",
+      reviewStatus: data.reviewStatus ?? "Specialist review not recorded",
+      reviewTrigger: data.reviewTrigger ?? "When the guidance, cited source or service requirements change",
       keywords: data.keywords ?? [],
       headings: extractHeadings(content),
       content,
@@ -93,6 +103,11 @@ export function getDocBySlug(slug: string[]): Doc | undefined {
     href: `/docs/${slug.join("/")}`,
     title: data.title ?? slug[slug.length - 1],
     description: data.description ?? "",
+    seoTitle: data.seoTitle ?? data.title ?? slug[slug.length - 1],
+    updated: data.updated,
+    owner: data.owner ?? "NCSG maintainers",
+    reviewStatus: data.reviewStatus ?? "Specialist review not recorded",
+    reviewTrigger: data.reviewTrigger ?? "When the guidance, cited source or service requirements change",
     keywords: data.keywords ?? [],
     headings: extractHeadings(content),
     content,

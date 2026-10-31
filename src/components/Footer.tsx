@@ -7,7 +7,7 @@ const footerLinks = [
   { title: "Governance", href: "/docs/operations/governance" },
   { title: "Code of conduct", href: "/docs/operations/code-of-conduct" },
   { title: "GitHub", href: site.github, external: true },
-  { title: "Changelog", href: `${site.github}/releases`, external: true },
+  { title: "Changelog", href: "/docs/operations/changelog" },
   { title: "Ask the community on GitHub", href: `${site.github}/discussions`, external: true },
 ];
 

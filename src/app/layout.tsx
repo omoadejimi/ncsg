@@ -40,11 +40,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.name,
     description: site.description,
+    images: [site.socialImage],
   },
   twitter: {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
+    images: [site.socialImage],
   },
   alternates: { canonical: "/" },
 };

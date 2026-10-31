@@ -105,8 +105,8 @@ for (const slug of ["forms", "error-messages"]) {
 test("all public pages and discovery metadata use the production domain", async ({ request }) => {
   const sitemap = await (await request.get("/sitemap.xml")).text();
   const urls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), match => match[1]);
-  expect(urls).toHaveLength(23);
-  expect(new Set(urls).size).toBe(23);
+  expect(urls).toHaveLength(24);
+  expect(new Set(urls).size).toBe(24);
   for (const url of urls) {
     expect(url).toMatch(/^https:\/\/ncsg\.guide(?:\/docs\/[^\s]+)?$/);
     const pathname = new URL(url).pathname;
