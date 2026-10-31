@@ -1,26 +1,46 @@
 ---
 title: Government IDs
-description: How to name, request and explain Nigerian identity numbers and documents.
-keywords: [BVN, NIN, voter card, drivers licence, international passport, identity]
+description: "Explain which identity numbers or documents a service accepts, why it needs them and how to get help."
+keywords: [BVN, NIN, voter card, driving licence, passport, identity, verification, name mismatch]
 ---
 
+## Explain the request
 
-## Asking for IDs
+List the identity numbers or documents your service accepts before people start. Distinguish a number from a document or photograph. Explain any alternatives and how someone without an accepted ID can get help.
 
-- Say **which** IDs you accept, up front, before the user starts.
-- Give the self-service check beside the field: "Dial \*565\*0# to see your BVN" / "Dial \*346# to check your NIN".
-- Explain the legal basis plainly: "The CBN requires us to verify your identity before you can send more than ₦50,000."
-- Reassure about scope: an ID number is not account access. Say so.
+State the purpose of the check and the information used. Verify the current product requirement and legal basis with the responsible team. Do not copy a monetary threshold from another service.
+
+<CopyExample label="Identity check template — replace placeholders before use">
+We need to verify your identity to [specific purpose]. We use [required information] to [specific check]. [Explain how the information is used and link to the relevant privacy information].
+</CopyExample>
+
+## Help people find their BVN
+
+Spell out Bank Verification Number (BVN) on first use. Where retrieval instructions are useful, keep the dialling code in literal code formatting.
+
+<CopyExample label="BVN retrieval hint">
+Dial `*565*0#` from the phone number registered for your BVN to check yours. A ₦20 service fee applies.
+</CopyExample>
+
+[NIBSS documents the code, registered-number requirement and fee](https://nibss-plc.com.ng/ussd-validation-services/), checked on 30 October 2026. Recheck before publishing these instructions in a product. Provide a support route for people who cannot use the registered number. Check any other ID retrieval instructions with the issuing authority; do not assume this code retrieves a NIN.
 
 ## When verification fails
 
-Name mismatches are common reasons verification experiences fail. This could be due to marriage, anglicised spellings, and order differences between documents. Don't write "details do not match". Say which record disagrees and what the user can do:
+Distinguish a mismatch from an unavailable verification service. Say which detail needs attention only when the system can establish that reliably. Avoid exposing another person’s record.
 
-<CopyExample label="BVN name mismatch">
-The name on this BVN doesn't match the name you entered.
+Do not assume a bank statement and a BVN record always contain the same name. Do not require a person to change an identity record until the responsible provider has confirmed what needs correcting.
 
-Enter your name exactly as it appears on your bank account details. Check a bank SMS or statement for this. If your name has changed, update it with your bank first, then try again.
+<CopyExample label="Illustrative BVN name mismatch — use only for a confirmed mismatch">
+The name you entered does not match the name returned by the BVN check.
+
+Check the name you entered and try again. If it still does not match, ask your bank to help you check your BVN record.
 </CopyExample>
+
+Offer the service’s verified support route when self-service cannot resolve the problem. Test the journey with people whose names contain multiple parts, diacritics, hyphens or a single name.
+
+## Evidence and limits
+
+**Operator source and editorial examples.** The dated NIBSS source supports the BVN retrieval instructions and fee. The identity-request and mismatch templates still need review against the service’s actual checks and support process. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 

@@ -17,7 +17,7 @@ test("search contains keyboard focus and restores its trigger on dismissal", asy
   const close = dialog.getByRole("button", { name: "Close search" });
   await expect(input).toBeFocused();
   await input.fill("BVN");
-  await expect(dialog.getByRole("option")).toHaveCount(2);
+  await expect(dialog.getByRole("option")).toHaveCount(3);
   // Options are selected with arrows, not separately tabbable buttons.
   await expect(dialog.locator('[role="option"] button, [role="option"] a')).toHaveCount(0);
   await page.keyboard.press("Tab");
@@ -86,7 +86,7 @@ test("pointer users can open a result and dismiss using the backdrop", async ({ 
 test("vocabulary renders seven semantic rows and reflows on small screens", async ({ page }) => {
   await page.goto(vocabulary);
   const table = page.getByRole("table");
-  await expect(table.getByRole("columnheader")).toHaveText(["Use", "Avoid", "Notes"]);
+  await expect(table.getByRole("columnheader")).toHaveText(["Term", "Suggested wording", "Context and alternatives"]);
   await expect(table.locator("tbody tr")).toHaveCount(7);
   await expect(table.getByRole("cell", { name: "airtime", exact: true })).toBeVisible();
   await expect(table.locator('th[scope="col"]')).toHaveCount(3);

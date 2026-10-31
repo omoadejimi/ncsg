@@ -1,36 +1,46 @@
 ---
 title: Financial terminology
-description: Consistent, user-tested language for money movements, accounts, charges and identity checks across Nigerian financial products.
-keywords: [transfer, wallet, KYC, charges, fees, beneficiary, ledger, tier]
+description: "Suggested terms for fees, transfers, savings, loans and identity checks in Nigerian services."
+keywords: [transfer, wallet, KYC, charges, fees, beneficiary, recipient, ledger, tier, interest]
 ---
 
-## Charges
+## Use these terms as a starting point
 
-- Call them **fees** in interfaces; "charges" is acceptable in statements.
-- State fees before confirmation, in naira, beside the amount: see [Currency](/docs/mechanics/currency).
-- Name the fee by cause: "transfer fee", "SMS alert fee", "card maintenance fee" — never "miscellaneous charges".
+The wording below is editorial guidance. It is not evidence that a term has been tested with every Nigerian audience. Validate important wording with the people using your service.
 
-## Identity and KYC
+All financial examples are illustrative. Replace bracketed placeholders with verified product information. Obtain product, operations and compliance review before using limits, fees, rates or promises in a live service.
 
-- Spell out **Bank Verification Number (BVN)** and **National Identification Number (NIN)** on first use per flow.
-- Explain why at the point of asking, and what you can't see: "Your BVN lets us confirm your identity. It doesn't give us access to your other accounts."
-- Use **"verify your identity"**, not "complete your KYC" — KYC is the bank's task, identity is the user's.
-- Account tiers: name the benefit, not the regulation. "Upgrade to send up to ₦5,000,000 a day", not "Upgrade to Tier 3".
+## Fees
+
+- Prefer **fees** in interfaces. Keep the wording consistent with the statement or agreement people will receive.
+- Show each fee and the total payable before confirmation. See [Currency](/docs/mechanics/currency).
+- Name the reason for the fee: “transfer fee” or “SMS alert fee”, rather than “miscellaneous charges”.
+
+## Identity checks
+
+- Spell out **Bank Verification Number (BVN)** and **National Identification Number (NIN)** on first use in each journey.
+- Use “verify your identity” instead of “complete your KYC”. Explain the check where you ask for the information.
+- Describe the information your service actually receives and how it uses it. Do not promise that an ID check cannot reveal account information without checking the integration and privacy notice.
+- Explain account benefits and restrictions together: “Verify your identity to send up to [verified daily limit]. [Other conditions].” Do not present a limit as a universal regulatory rule.
+
+## Transfers and recipients
+
+Use [Nigerian English terminology](/docs/nigeria/nigerian-english) consistently. Distinguish a transfer that succeeded, a confirmed failure and a result that is still unknown. Only promise a return date when operations can support it for that transaction.
 
 ## Savings and loans
 
-- State interest as both rate and naira where possible: "12% per year — about ₦1,000 monthly on this balance".
-- For loans, always show **total repayment** alongside instalments. "₦10,000 monthly for 6 months (₦60,000 total)".
-- Never euphemise penalties. "Late fee: ₦500 per week" beats "service adjustment".
+- Explain whether a rate is fixed or variable, the period it covers, how interest is calculated, when it is paid, and relevant fees or tax.
+- If you show an interest amount, state the balance and assumptions. For illustration, 12% simple annual interest on a constant ₦100,000 balance is ₦12,000 over a year before fees and tax. This arithmetic does not promise monthly payments or describe a particular product.
+- Show the amount received, instalments, total repayment, due dates and all applicable fees. Confirm that the figures reconcile.
+- Name late fees directly and explain when they apply.
 
-<DoDont>
-<Do>
-You'll get ₦10,000 now and pay back ₦11,500 in 30 days.
-</Do>
-<Dont>
-Loan disbursement of ₦10,000 attracts a 15% facility fee payable at tenor end.
-</Dont>
-</DoDont>
+<CopyExample label="Loan summary template — replace placeholders before use">
+You’ll receive [amount received]. Pay [instalment amount] on [dates]. The total you’ll repay is [total repayment], including [fees and interest]. [Explain any additional conditions].
+</CopyExample>
+
+## Evidence and limits
+
+**Editorial guidance; product review required.** No NCSG terminology study is linked here. The interest calculation is illustrative arithmetic. It does not establish a product rate, entitlement or payment schedule. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 

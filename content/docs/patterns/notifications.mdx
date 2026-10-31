@@ -1,39 +1,54 @@
 ---
 title: Notifications
-description: A notification interrupts someone's day. Earn it — lead with the news, keep it short, and never cry wolf.
-keywords: [push, SMS, alerts, transaction alerts, in-app messages]
+description: "Put the outcome first, choose an appropriate channel and protect private information."
+keywords: [push, SMS, alerts, transaction alerts, in-app messages, encoding, privacy]
 ---
 
-## Lead with the news
+## Lead with the outcome
 
-The first five words decide whether a notification is read. Put the outcome first and details after.
+State the useful news first, then the details or next action. Choose tone and urgency to match the situation. Test channel preferences rather than assuming one channel is trusted by every audience.
 
 <DoDont>
 <Do>
-₦50,000 received from Adaeze Nwosu. New balance: ₦126,400.
+Your application has been received. Open the app to view the next steps.
 </Do>
 <Dont>
-Dear valued customer, this is to notify you that a credit transaction has occurred on your account.
+Dear valued user, this is to notify you that an update regarding your application is now available.
 </Dont>
 </DoDont>
 
-## Channel notes
+## Choose the channel
 
 ### SMS
 
-Still the most trusted channel for money in Nigeria — and the most constrained. Stay within 160 characters where possible, lead with the amount and direction (credit/debit), and include the balance only if the user opted in (SMS is visible on lock screens).
+Check encoding and segment count with the actual provider. A single SMS commonly holds 160 GSM-7 characters or 70 UCS-2 characters; multipart messages have lower per-segment limits. Symbols such as ₦ and many language diacritics can change encoding. Do not remove meaningful diacritics simply to reduce cost.
+
+Illustrative messages to check in a provider’s segment calculator:
+
+- `NGN 5,000 received. Open the app for details.` uses GSM-7 characters and fits a single segment under the common limit.
+- `₦5,000 received. Open the app for details.` contains a character outside GSM-7 and fits a single UCS-2 segment under the common limit.
+
+These are encoding examples, not delivery test results. Check the final rendered message after variables, links and opt-out wording are added. Confirm segmentation, fees and delivery on the intended route. See [Twilio’s SMS encoding and length documentation](https://www.twilio.com/docs/glossary/what-sms-character-limit).
 
 ### Push
 
-Title carries the news; body carries one detail. Don't duplicate the title in the body.
+Put the outcome in the title and a useful detail or action in the body. A notification preview may appear on a shared or locked device. Offer a neutral preview such as “You have an account update” when details are sensitive; show full information after authentication.
 
 ### In-app
 
-Use for non-urgent information. Never block a money task with a marketing interstitial.
+Use in-app messages for details people can review while using the service. Do not interrupt an important task with unrelated marketing. Provide an accessible way to revisit important notices.
 
-## Marketing vs transactional
+## Protect private information
 
-Keep them separate in tone, channel and opt-out. A user who mutes "₦500 off airtime!" must never lose debit alerts as a side effect.
+Consider amounts, names, balances, health information and application details before including them in a preview. Let people choose how much detail to display where the service supports that choice. Opting into alerts does not automatically mean opting into balance disclosure.
+
+## Separate marketing and service messages
+
+Explain notification choices clearly. Muting promotions should not silently disable essential account or security messages. Verify what can be opted out of for the specific service and channel; do not promise delivery or settings the system cannot support.
+
+## Evidence and limits
+
+**Provider documentation and editorial examples.** Twilio documents encoding limits; actual delivery and segment counts depend on the final text and route. These messages have not been presented as provider-tested results. Test language fidelity, previews and notification choices. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 

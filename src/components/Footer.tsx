@@ -2,13 +2,13 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 const footerLinks = [
-  { title: "About", href: "/docs/foundations/principles" },
+  { title: "Principles", href: "/docs/foundations/principles" },
   { title: "Contribution guidelines", href: "/docs/operations/how-to-contribute" },
   { title: "Governance", href: "/docs/operations/governance" },
   { title: "Code of conduct", href: "/docs/operations/code-of-conduct" },
   { title: "GitHub", href: site.github, external: true },
   { title: "Changelog", href: `${site.github}/releases`, external: true },
-  { title: "Contact", href: `${site.github}/discussions`, external: true },
+  { title: "Ask the community on GitHub", href: `${site.github}/discussions`, external: true },
 ];
 
 export default function Footer() {

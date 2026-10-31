@@ -1,144 +1,80 @@
 ---
 title: Error messages
-description: An error message should tell people what happened, explain what it means for their money, data or progress, and show them what to do next.
-keywords: [errors, failed transaction, validation, BVN, transfer failed, reversal, fintech]
+description: "Explain the problem, its effect on money, data or progress, and the next useful action."
+keywords: [errors, failed transaction, validation, BVN, transfer failed, reversal, fintech, upload, connection]
 ---
 
-## Overview
+## Explain what is known
 
-An error message is the product speaking at the exact moment trust is most fragile. In Nigerian fintech, that moment usually involves money: a transfer that hangs, a debit that may or may not have happened, a BVN that won't verify.
+A useful error message explains:
 
-A good error message does three things, in this order:
+1. What happened, in plain language.
+2. What this means for the person’s money, information or progress.
+3. What they can do next, or whether they need to wait.
 
-1. Explain what happened in plain language.
-2. Explain what it means for the person's money, data or progress.
-3. Explain what to do next, or tell them that no action is needed.
+Use a calm, direct tone. Avoid blame, jokes and unexplained system codes. If the outcome is unknown, say so rather than presenting a failure or success as confirmed.
 
-If a message cannot do all three, it is not finished.
+## Match the message to the transaction state
 
-## Principles
+These are illustrative copy templates, not operational promises. Replace placeholders with verified product details. Confirm the state, retry behaviour, return process and support route with engineering and operations before using the copy.
 
-### Lead with the situation, not the system
+| Confirmed state | Suggested message | Next action and conditions |
+| --- | --- | --- |
+| Completed | Your transfer of [amount] to [recipient] is complete. | View receipt. Use only when completion is confirmed. |
+| Failed, no debit | We could not send [amount]. No money was taken. | Offer “Try again” only when another attempt cannot duplicate the payment. |
+| Outcome unknown | We are checking this transfer. We do not yet know whether it completed. | Check status. Explain how to avoid a duplicate payment and when to get help. |
+| Failed, money taken | The transfer failed. [Amount] was taken from your account. We will return it by [verified deadline]. | Track return or get help. Use only when the debit and return commitment are confirmed. |
 
-Describe the problem from the user's point of view. 'Error 51' describes the system. 'You don't have enough money in this account' describes the situation.
+Do not copy a return window from another service. Explain what happens if the confirmed deadline passes. Prefer “returned to your account” where “reversal” would need explanation.
 
-### Reassure about money first
-
-In any payment flow, the user's first fear is a double debit. If money has not moved, say so immediately. If it has, say exactly where it is and when it returns.
-
-### Don't blame the user
-
-Write 'Check the account number' rather than 'You entered an invalid account number'. The fix matters; fault does not.
-
-### Be honest about uncertainty
-
-If the system genuinely doesn't know whether a transaction completed, say that — and say what happens in each case. False confidence is worse than honest uncertainty.
-
-### Drop the theatre
-
-No 'Oops!', no sad-face emoji, no exclamation marks. A failed transfer is not a whimsical moment. Calm, plain sentences read as competence.
-
-## Do and Don't
-
-<DoDont>
-<Do>
-We couldn't complete your transfer.
-
-Your money has not left your account. Check your network connection and try again.
-</Do>
-<Dont>
-Oops! Something went wrong 😢
-
-Please try again later.
-</Dont>
-</DoDont>
+## Show the correction
 
 <DoDont>
 <Do>
 Check the BVN and try again.
 
-A BVN is 11 digits. Dial `*565*0#` on the phone number linked to your bank account to see yours.
+A Bank Verification Number (BVN) has 11 digits.
 </Do>
 <Dont>
 Invalid BVN.
 </Dont>
 </DoDont>
 
-<DoDont>
-<Do>
-You don't have enough money in this account.
+Where retrieval help is relevant, use `*565*0#` with the registered-phone requirement and fee explained in [Government IDs](/docs/nigeria/government-ids). A correctly formatted number can still fail an identity check; do not describe that as a length error.
 
-This transfer needs ₦12,500 including the ₦25 fee. You can change the amount or add money to your account.
-</Do>
-<Dont>
-Transaction declined: insufficient funds (error code 51).
-</Dont>
-</DoDont>
+## Distinguish connection problems
 
-<DoDont>
-<Do>
-This transfer is taking longer than usual.
+- **No connection:** explain whether the task has been sent or saved, if the system knows. Offer a safe recovery action.
+- **Slow response:** explain that the result is still being checked. Avoid asking for another payment while its outcome is unknown.
+- **Unavailable service:** name the affected service when known and provide a working status or support route.
 
-We're still trying. If it doesn't complete in 5 minutes, any money taken will be returned to your account automatically.
-</Do>
-<Dont>
-Request timeout. Please contact support.
-</Dont>
-</DoDont>
+Offer a USSD or other fallback only when the specific service supports it. Verify its action, eligibility and fee. Do not assume a bank-specific code works for everyone or safely repeats an uncertain transaction.
 
-## Nigerian-specific considerations
-
-### Address the double-debit fear directly
-
-Years of 'debited but not credited' experiences mean Nigerian users assume the worst when a payment fails. State the position of their money explicitly — *your money has not left your account* — even when it feels obvious to the team.
-
-### Give reversal timelines people can hold you to
-
-'Your money will be reversed' is folklore; 'within 24 hours' is a commitment. Use a concrete window your operations team actually meets, and prefer "returned to your account" over the jargon "reversed" where space allows.
-
-### Plan for unreliable networks as the normal case
-
-Network failure is not an edge case in Nigeria; it is Tuesday. Write distinct messages for *no connection*, *slow connection* and *bank's service is down* — they call for different actions. Where a USSD fallback exists, offer it: "No data? Dial *737# to try this transfer instead."
-
-### Respect metered data and battery
-
-Avoid auto-retry loops that silently burn data. If the app will retry, say so once; if the user should retry, make it one clear button.
-
-### Avoid carrier-grade jargon
-
-'Beneficiary', 'narration', 'switch failure' and 'kindly revert' belong in back-office systems. People send money *to someone*, with *a description*, and things *fail*.
+Explain automatic retries and preserve progress where the implementation supports it. Avoid repeated retries that use data without making progress clear.
 
 ## Accessibility considerations
 
-- Announce errors to screen readers with a polite live region (`role="alert"` or `aria-live="assertive"` for blocking errors).
-- Place inline form errors **above or beside the field**, programmatically associated with `aria-describedby` — never colour alone.
-- Keep contrast of error text at 4.5:1 or better; on this site, errors use clay `#9A3A18` on white.
-- Move focus to the error summary on submit failure, the pattern proven by GOV.UK forms research.
-- Never use ALL CAPS for emphasis — screen readers may spell it out letter by letter, and it reads as shouting.
+- Use a polite status announcement, such as `role="status"`, for updates that can wait. Reserve `role="alert"` for urgent information needing immediate attention; it is assertive, not polite.
+- For form errors, associate the message with its field, for example through `aria-describedby`. Provide text that identifies the error and explains a correction where possible.
+- On failed form submission, use a tested, focused error summary with links to fields. Do not add competing live announcements without checking for duplicate speech.
+- Maintain required contrast in each theme and state. Do not rely on colour, icons or capital letters alone.
+- Test timing, focus and announcements with keyboard and screen-reader users in the actual flow.
 
-## Examples from fintech experience
+See [W3C status-message guidance](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html), [the status role technique](https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22.html), [the alert pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/) and [GOV.UK’s error-summary pattern](https://design-system.service.gov.uk/components/error-summary/).
 
-<Example title="Failed interbank transfer — full screen state">
-**Heading:** We couldn't send ₦25,000 to Chinedu Okafor
+## Example beyond payments
 
-**Body:** The receiving bank didn't respond. Your money has not left your account.
+<CopyExample label="Document upload — illustrative confirmed failure">
+We could not upload your document.
 
-**Primary action:** Try again
-
-**Secondary action:** Save and try later
-</Example>
-
-<Example title="Pending transaction — honest uncertainty">
-**Heading:** We're confirming this transfer
-
-**Body:** Your bank has received the request but hasn't confirmed it yet. If it fails, your ₦8,000 will be returned to your account within 24 hours. You don't need to do anything.
-
-**Action:** Check status
-</Example>
-
-<CopyExample label="Inline validation — phone number field">
-Enter the 11-digit phone number, starting with 0. For example, 0803 123 4567.
+Your application answers are saved, but the document has not been added. Check your connection and try uploading it again.
 </CopyExample>
+
+Use this only when saved answers and the failed upload are confirmed. If progress is not saved, say what needs to be entered again. Give accepted file types and the verified size limit beside the upload field.
+
+## Evidence and limits
+
+**Standards-informed guidance and illustrative templates.** W3C and GOV.UK sources support the accessibility patterns, not the transaction promises. No NCSG user study is linked for the copy. Verify system states and test comprehension before reuse. For contributions, use the [evidence record in Editorial standards](/docs/operations/editorial-standards).
 
 ## Related guidance
 
@@ -146,4 +82,3 @@ Enter the 11-digit phone number, starting with 0. For example, 0803 123 4567.
 - [Financial terminology](/docs/nigeria/financial-terminology)
 - [Forms](/docs/patterns/forms)
 - [Notifications](/docs/patterns/notifications)
-

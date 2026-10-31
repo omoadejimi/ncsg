@@ -13,32 +13,32 @@ import { site } from "@/lib/site";
 const featured = [
   {
     title: "Plain language",
-    description: "Explore the principles of writing plainly and how to help your users with it.",
+    description: "Help people understand information and complete tasks.",
     href: "/docs/foundations/plain-language",
   },
   {
     title: "Error messages",
-    description: "Discover how to write clear and user-friendly error content.",
+    description: "Explain problems and give people a useful next action.",
     href: "/docs/patterns/error-messages",
   },
   {
     title: "Nigerian English",
-    description: "View relevant guidance on writing the Nigerian way.",
+    description: "Choose familiar terms for your audience and task.",
     href: "/docs/nigeria/nigerian-english",
   },
   {
     title: "Accessibility",
-    description: "Explore UX content accessibility best practices and how to use them in your project.",
+    description: "Write accessible content and plan the checks it needs.",
     href: "/docs/foundations/accessibility",
   },
   {
     title: "Financial terminology",
-    description: "Discover consistent language use for the Nigerian financial communications space.",
+    description: "Explain fees, transfers and identity checks clearly.",
     href: "/docs/nigeria/financial-terminology",
   },
   {
     title: "Translation principles",
-    description: "View the principles of localising Nigerian languages.",
+    description: "Plan, review and maintain multilingual content.",
     href: "/docs/multilingual/translation-principles",
   },
 ];
@@ -49,16 +49,16 @@ const whyItMatters = [
     body: "Because English is not the first language of many Nigerians, clear content can help improve user interaction.",
   },
   {
-    title: "Mobile-first by necessity",
-    body: "Many Nigerians connect to the internet through low-cost devices on metered data. Every unnecessary word costs money and patience.",
+    title: "Mobile access",
+    body: "Plan for small screens, limited data and unreliable connections. Put essential information first and make recovery clear.",
   },
   {
-    title: "Words move money",
-    body: "When brands communicate precisely and honestly, they’ll build trust and generate more income.",
+    title: "Clear decisions",
+    body: "Clear information helps people understand costs, decide what to do and use services with confidence.",
   },
   {
     title: "Consistency",
-    body: "An open reference can help content teams create consistent experiences for users everywhere.",
+    body: "A shared reference helps teams use terms consistently while adapting them to their audience.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft dark:text-[#A8B3AC]">
               The Nigerian Content Style Guide is an open-source guide designed to help
-              content teams create clear, inclusive, and accessible digital experiences for Nigerian users.
+              content teams create clear, inclusive and accessible digital experiences for people in Nigeria.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
